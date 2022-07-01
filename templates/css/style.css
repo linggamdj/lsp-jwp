@@ -1,0 +1,22 @@
+.navbar-home {
+    padding: 180px 0px 165px;
+    margin-top: -70px;
+    background-image: url("../img/header-img.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.navbar-home > h1 {
+    color: white;
+    font-weight: bold;
+    -webkit-text-stroke: 1px black;
+}
+
+footer {
+    color: white;
+    font-weight: 600;
+}
+
+.product-image {
+    height: 250px;
+}
