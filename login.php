@@ -9,8 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="templates/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <?php include 'templates/pages/style.php'; ?>
 
     <title>Petshopqu | Login</title>
 </head>
@@ -18,7 +17,7 @@
     <?php include 'templates/pages/navbar.php'; ?>
 
     </main>
-        <div class="column mt-5 mb-2">
+        <div class="column my-5">
             <div class="login-logo text-center mb-4">
                 <img src="http://localhost/petshopqu/templates/img/logo-cat.png" alt="logo" height="100">
             </div>
@@ -29,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label for="password">PASSWORD</label>
-                    <input type="text" class="form-control text-center" name="password" placeholder="Password">
+                    <input type="password" class="form-control text-center" name="password" placeholder="Password">
                 </div>
                 <input type="submit" class="btn btn-dark" name="login" value="LOGIN">
             </form>
@@ -47,7 +46,7 @@
             $password = $_POST['password'];
 
             // query
-            $query = "SELECT * FROM pelanggan WHERE username='$username' AND password='$password'";
+            $query = "SELECT * FROM pelanggan WHERE username='$username'";
 
             // result
             $result = mysqli_query($conn, $query);
@@ -55,14 +54,24 @@
             if (mysqli_num_rows($result) === 1) {
                 $row = mysqli_fetch_assoc($result);
 
-                if ($row["role"] == "ADMIN") {
-                    echo "<script>alert('Login telah berhasil sebagai Admin'); window.location.href='index.php'</script>";
-                    exit;
-                } else if ($row["role"] == "PELANGGAN") {
-                    echo "<script>alert('Login telah berhasil sebagai Pelanggan'); window.location.href='pelanggan.php'</script>";
-                } else {
-                    echo "<script>alert('Gagal login, silakan ulangi');</script>";
+                // verifikasi password
+                $verify = password_verify($password, $row["password"]);
+
+                if ($verify) {
+                    if ($row["role"] == "ADMIN") {
+                        echo "<script>alert('Login telah berhasil sebagai Admin'); window.location.href='index.php'</script>";
+                        exit;
+                    } else if ($row["role"] == "PELANGGAN") {
+                        echo "<script>alert('Login telah berhasil sebagai Pelanggan'); window.location.href='pelanggan.php'</script>";
+                        exit;
+                    } else {
+                        echo "<script>alert('Gagal login, silakan ulangi');</script>";
+                        exit;
+                    }
                 }
+            } else {
+                echo "<script>alert('Username atau password salah!');</script>";
+                exit;
             }
         }
     ?>

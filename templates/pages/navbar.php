@@ -16,7 +16,7 @@
         <a class="nav-link" href="#">PRODUK <span class="sr-only"></span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">REGISTER <span class="sr-only"></span></a>
+        <a class="nav-link" href="http://localhost/petshopqu/register.php">REGISTER <span class="sr-only"></span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="http://localhost/petshopqu/login.php">LOGIN <span class="sr-only"></span></a>
