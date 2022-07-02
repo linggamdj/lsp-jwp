@@ -21,11 +21,11 @@
     </main>
         <div class="form-product column my-5 text-uppercase text-center">
             <div class="title-add mb-5">
-                <h1>
+                <h2>
                     TAMBAH DATA
-                </h1>
+                </h2>
             </div>
-            <form method="post" class="col-lg-6 col-md-6 col-sm-4 mx-auto w-20">
+            <form method="post" enctype="multipart/form-data" class="col-lg-6 col-md-6 col-sm-4 mx-auto w-20">
                 <div class="form-group text-left">
                     <label>Nama Produk</label>
                     <input type="text" class="form-control" name="nama" placeholder="Nama Produk" required>
@@ -39,8 +39,8 @@
                     <input type="number" name="harga" class="form-control" id="exampleFormControlInput1" placeholder="Nama Produk" required>
                 </div>
                 <div class="form-group text-left">
-                    <label for="exampleFormControlFile1">Foto Produk</label>
-                    <input type="file" name="foto" class="form-control-file">
+                    <label>Foto Produk</label>
+                    <input type="file" name="gambar" class="form-control-file">
                 </div>
                 <button type="submit" name="tambah" class="btn btn-dark">TAMBAH</button>
             </form>
@@ -56,7 +56,7 @@
             if (tambah($_POST)) {
                 echo "<script>alert('Tambah produk berhasil!'); window.location.href='produk.php'</script>";
             } else {
-                echo "<script>alert('gagal tambah produk!');</script>";
+                echo "<script>alert('Gagal tambah produk!');</script>";
             }
         }
     ?>

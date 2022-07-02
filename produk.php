@@ -46,13 +46,13 @@
                 <?php $i = 1; ?>
                 <?php foreach($produk as $data) : ?>
                 <tr>
-                    <th scope="row"><?= $i; ?></th> 
+                    <td class="font-weight-bold"scope="row"><?= $i; ?></td> 
                     <td><?= $data["nama_produk"] ?></td>
-                    <td>piye iki toh</td>
+                    <td> <img src="templates/uploads/<?= $data["gambar"] ?>" width="50" alt="image"></td>
                     <td><?= $data["deskripsi_produk"] ?></td>
                     <td>Rp<?= $data["harga_produk"] ?></td>
                     <td class="action-button text-uppercase text-bold">
-                        <a href="#">edit</a> | 
+                        <a href="ubah.php?id=<?= $data["ID_produk"] ?>">edit</a> | 
                         <a href="hapus.php?id=<?= $data["ID_produk"] ?>" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?');">delete</a>
                     </td>
                 </tr>

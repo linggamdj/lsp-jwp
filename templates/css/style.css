@@ -33,6 +33,26 @@ footer {
     text-decoration: none;
 }
 
-.button-add {
-    margin-left: 150px !important;
+.product-title {
+    text-align: center;
+    /* background-image: linear-gradient(#8e7777, #b9acac, #d1c7c7, #f3f1f1); */
+}
+
+.product-card {
+    /* margin-top: 100px; */
+
+    /* margin-bottom: 100px; */
+    margin: 0 auto;    
+}
+
+.card-price {
+    margin-top: -18px;
+}
+
+.card-item {
+    margin: 0 auto;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
 }
