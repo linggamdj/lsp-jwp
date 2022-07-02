@@ -1,5 +1,7 @@
 <?php
-    include 'templates/config/db_connection.php';
+    session_start();
+
+    include 'templates/function/functions.php';;
 ?>
 
 <!DOCTYPE html>
@@ -24,11 +26,11 @@
             <form method="post" class="text-center col-lg-2 col-md-4 col-sm-8 mx-auto w-20">
                 <div class="form-group">
                     <label for="username">USERNAME</label>
-                    <input type="text" class="form-control text-center" name="username" placeholder="Username">
+                    <input type="text" class="form-control text-center" name="username" placeholder="Username" required>
                 </div>
                 <div class="form-group">
                     <label for="password">PASSWORD</label>
-                    <input type="password" class="form-control text-center" name="password" placeholder="Password">
+                    <input type="password" class="form-control text-center" name="password" placeholder="Password" required>
                 </div>
                 <input type="submit" class="btn btn-dark" name="login" value="LOGIN">
             </form>
@@ -40,8 +42,6 @@
     <?php include 'templates/jquery/jquery.php'; ?>
 
     <?php
-        session_start();
-
         if (isset($_POST['login'])) {
             // mengambil nilai inputan user
             $username = $_POST['username'];
@@ -68,7 +68,7 @@
                         echo "<script>alert('Login telah berhasil sebagai Admin'); window.location.href='index.php'</script>";
                         exit;
                     } else if ($row["role"] == "PELANGGAN") {
-                        echo "<script>alert('Login telah berhasil sebagai Pelanggan'); window.location.href='pelanggan.php'</script>";
+                        echo "<script>alert('Login telah berhasil sebagai Pelanggan'); window.location.href='index.php'</script>";
                         exit;
                     } else {
                         echo "<script>alert('Gagal login, silakan ulangi');</script>";
