@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +16,7 @@
 <body>
     <?php include 'templates/pages/navbar.php'; ?>
 
-    <header class="navbar-home text-center">
+    <header class="navbar-home text-center mx-auto">
         <h1>SELAMAT DATANG DI<br>PETSHOPQU</h1>
     </header>
 

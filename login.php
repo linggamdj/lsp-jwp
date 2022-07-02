@@ -40,6 +40,8 @@
     <?php include 'templates/jquery/jquery.php'; ?>
 
     <?php
+        session_start();
+
         if (isset($_POST['login'])) {
             // mengambil nilai inputan user
             $username = $_POST['username'];
@@ -58,6 +60,10 @@
                 $verify = password_verify($password, $row["password"]);
 
                 if ($verify) {
+                    // set session
+                    $_SESSION["login"] = true;
+                    $_SESSION["username"] = $username;
+
                     if ($row["role"] == "ADMIN") {
                         echo "<script>alert('Login telah berhasil sebagai Admin'); window.location.href='index.php'</script>";
                         exit;
@@ -68,6 +74,9 @@
                         echo "<script>alert('Gagal login, silakan ulangi');</script>";
                         exit;
                     }
+                } else {
+                    echo "<script>alert('Username atau password salah!');</script>";
+                    exit;
                 }
             } else {
                 echo "<script>alert('Username atau password salah!');</script>";
