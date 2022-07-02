@@ -26,7 +26,7 @@
     <?php include 'templates/pages/navbar.php'; ?>
 
     <main>
-        <div class="product-title text-center mt-5">
+        <div class="product-title text-center my-5">
             <h2 class="text-black">
                 DAFTAR PRODUK
             </h2>
@@ -51,15 +51,17 @@
                     <td>piye iki toh</td>
                     <td><?= $data["deskripsi_produk"] ?></td>
                     <td>Rp<?= $data["harga_produk"] ?></td>
-                    <a href="http://"></a>
-                    <td class="action-button text-uppercase text-bold"><a href="http://">edit</a> | <a href="http://">delete</a></td>
+                    <td class="action-button text-uppercase text-bold">
+                        <a href="#">edit</a> | 
+                        <a href="hapus.php?id=<?= $data["ID_produk"] ?>" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?');">delete</a>
+                    </td>
                 </tr>
                 <?php $i++; ?>
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <div class="button-add text-center my-5">
-            <a class="btn btn-dark" href="tambah.php">Tambah Produk</a>
+        <div class="button-add text-center mx-auto my-5">
+            <a class="btn btn-dark text-white" href="tambah.php">Tambah Produk</a>
         </div>
     </main>
     

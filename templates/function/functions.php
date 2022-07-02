@@ -68,4 +68,12 @@
 
         return mysqli_affected_rows($conn);
     }
+
+    function hapus($data) {
+        global $conn;
+
+        mysqli_query($conn, "DELETE FROM produk WHERE ID_produk = $data");
+
+        return mysqli_affected_rows($conn);
+    }
 ?>

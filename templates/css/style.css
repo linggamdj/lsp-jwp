@@ -23,12 +23,12 @@ footer {
     height: 250px;
 }
 
-.action-button > a:link {
+.action-button > a:link, a:visited {
     color: black;
     text-decoration: none;
 }
 
-.action-button > a:hover {
+.action-button > a:hover, a:visited:hover {
     color: gray;
     text-decoration: none;
 }
