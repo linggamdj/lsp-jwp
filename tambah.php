@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group text-left">
                     <label>Harga Produk</label>
-                    <input type="number" name="harga" class="form-control" id="exampleFormControlInput1" placeholder="Nama Produk" required>
+                    <input type="number" name="harga" class="form-control" placeholder="Harga Produk" required>
                 </div>
                 <div class="form-group text-left">
                     <label>Foto Produk</label>

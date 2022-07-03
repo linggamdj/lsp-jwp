@@ -1,10 +1,13 @@
+body {
+    background-color: #f2f2f2 !important;
+}
+
 .navbar-home {
-    padding: 180px 0px 165px;
     margin-top: -70px;
+    padding: 180px 0px 165px;
     background-image: url("../img/header-img.jpg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    margin: 0 auto;
+    background-size: cover;
+    background-position: center;
 }
 
 .navbar-home > h1 {
@@ -33,24 +36,33 @@ footer {
     text-decoration: none;
 }
 
-.product-title {
-    text-align: center;
-    /* background-image: linear-gradient(#8e7777, #b9acac, #d1c7c7, #f3f1f1); */
+.section-product {
+    color: #f2f2f2 !important;
 }
 
-.product-card {
-    /* margin-top: 100px; */
-
-    /* margin-bottom: 100px; */
-    margin: 0 auto;    
+.product-title {
+    text-align: center;
 }
 
 .card-price {
-    margin-top: -18px;
+    margin-top: -8px !important;
 }
 
-.card-item {
-    margin: 0 auto;
+.card-image {
+    min-height: 250px;
+    max-height: 250px;
+    background-size: auto ;
+    background-position: 0 -50px;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-product {
+    border-radius: 10px !important;
+    background-color: #292b2f !important;
+}
+
+.table > thead > tr > th {
+    vertical-align: middle;
 }
 
 .table > tbody > tr > td {

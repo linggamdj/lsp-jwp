@@ -20,28 +20,39 @@
 <body>
     <?php include 'templates/pages/navbar.php'; ?>
 
-    <header class="navbar-home text-center mx-auto">
+    <header class="navbar-home text-center">
         <h1>SELAMAT DATANG DI<br>PETSHOPQU</h1>
     </header>
 
     </main>
-    <div class="product-title">
-        <h2 class="py-5">
-            Daftar Produk
-        </h2>
-    </div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="product-card d-flex  justify-content-center  mb-5">
-            <?php foreach($produk as $data) : ?>
-                <div class="card-item card border mx-3" style="width: 18rem;">
-                    <img class="card-img-top border p-5" src="templates/uploads/<?= $data["gambar"] ?>" width="10" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="font-weight-bold"><?= $data["nama_produk"] ?></p>
-                        <p class="card-price font-weight-normal"><?= $data["harga_produk"] ?></p>
-                        <p class="card-text"><?= $data["deskripsi_produk"] ?></p>
-                    </div>
+        <section class="section-title">
+            <div class="product-title">
+                <h2 class="py-5">
+                    Daftar Produk
+                </h2>
+            </div>
+        </section>
+        
+        <section class="section-product">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <?php foreach($produk as $data) : ?>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mx-4 mb-4">
+                            <div class="d-flex flex-column text-left mx-auto">
+                                <div class="card card-product mx-auto" style="width: 17rem;">
+                                    <img class="card-image" src="templates/uploads/<?= $data["gambar"] ?>" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?= $data["nama_produk"] ?></h5>
+                                        <h6 class="card-price">Rp<?= number_format($data["harga_produk"], 2) ;?></h5>
+                                        <p class="card-text"><?= $data["deskripsi_produk"] ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
-            <?php endforeach; ?>
-        </div>
+            </div>
+        </section>
     <main>
     
     <?php include 'templates/pages/footer.php'; ?>

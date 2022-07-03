@@ -64,7 +64,7 @@
         $name = htmlspecialchars($data["nama"]);
         $desc = htmlspecialchars($data["deskripsi"]);
         $price = htmlspecialchars($data["harga"]);
-        $pic = htmlspecialchars($data["gambar"]);
+        // $pic = htmlspecialchars($data["gambarr"]);
 
 
         // mengupload gambar
@@ -136,13 +136,22 @@
         $name = htmlspecialchars($data["nama"]);
         $desc = htmlspecialchars($data["deskripsi"]);
         $price = htmlspecialchars($data["harga"]);
-        $pic = htmlspecialchars($data["foto"]);
+        $oldPic = htmlspecialchars($data["gambarLama"]);
+
+        // mengecek apakah user mengupload gambar baru
+        if ($_FILES['gambar']['error'] === 4) {
+            $pic = $oldPic;
+        } else {
+            $pic = upload();
+        }
+        
 
         // query
         $query = "UPDATE produk SET
                 nama_produk = '$name',
                 deskripsi_produk = '$desc',
-                harga_produk = $price
+                harga_produk = $price,
+                gambar = '$pic'
                 WHERE ID_produk = $id
                 ";
 
@@ -156,8 +165,24 @@
     function hapus($data) {
         global $conn;
 
+        $file = mysqli_fetch_assoc(mysqli_query($conn, "SELECT gambar FROM produk WHERE ID_produk = $data"));
+        
+        unlink("C:/xampp/htdocs/petshopqu/templates/uploads/", $file);
+
         mysqli_query($conn, "DELETE FROM produk WHERE ID_produk = $data");
 
         return mysqli_affected_rows($conn);
+    }
+
+    // fungsi untuk search
+    function cari($data) {
+        $query = "SELECT * FROM produk
+                    WHERE nama_produk LIKE '%$data%' OR
+                    deskripsi_produk LIKE '%$data%' OR
+                    harga_produk LIKE '%$data%'
+                    ORDER BY ID_produk ASC
+                ";
+
+        return query($query);
     }
 ?>

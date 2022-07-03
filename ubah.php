@@ -32,8 +32,9 @@
                     Ubah Data
                 </h2>
             </div>
-            <form action="" method="post" class="col-lg-6 col-md-6 col-sm-4 mx-auto w-20">
+            <form method="post" enctype="multipart/form-data" class="col-lg-6 col-md-6 col-sm-4 mx-auto w-20">
                 <input type="hidden" name="id" value="<?= $data["ID_produk"] ?>">
+                <input type="hidden" name="gambarLama" value="<?= $data["gambar"] ?>">
                 <div class="form-group text-left">
                     <label>Nama Produk</label>
                     <input type="text" class="form-control" name="nama" placeholder="Nama Produk" value="<?= $data["nama_produk"] ?>" required>
@@ -44,11 +45,11 @@
                 </div>
                 <div class="form-group text-left">
                     <label>Harga Produk</label>
-                    <input type="number" name="harga" class="form-control" id="exampleFormControlInput1" placeholder="Nama Produk" value="<?= $data["harga_produk"] ?>" required>
+                    <input type="number" name="harga" class="form-control" placeholder="Harga Produk" value="<?= $data["harga_produk"] ?>" required>
                 </div>
                 <div class="form-group text-left">
                     <label for="exampleFormControlFile1">Foto Produk</label>
-                    <input type="file" name="foto" class="form-control-file">
+                    <input type="file" name="gambar" class="form-control-file">
                 </div>
                 <button type="submit" name="ubah" class="btn btn-dark">UBAH</button>
             </form>
@@ -66,6 +67,7 @@
                 echo "<script>alert('Data berhasil diubah!'); window.location.href='produk.php'</script>";
             } else {
                 echo "<script>alert('Data gagal diubah!'); window.location.href='produk.php'</script>";
+                exit;
             }
         }
     ?>
