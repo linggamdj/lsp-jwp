@@ -63,7 +63,7 @@
     <?php
         // mengecek apakah data berhasil diubah
         if (isset($_POST["ubah"])) {
-            if (ubah($_POST) > 0) {
+            if (ubah($_POST) >= 0) {
                 echo "<script>alert('Data berhasil diubah!'); window.location.href='produk.php'</script>";
             } else {
                 echo "<script>alert('Data gagal diubah!'); window.location.href='produk.php'</script>";

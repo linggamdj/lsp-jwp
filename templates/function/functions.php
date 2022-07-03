@@ -109,8 +109,6 @@
         $name = htmlspecialchars($data["nama"]);
         $desc = htmlspecialchars($data["deskripsi"]);
         $price = htmlspecialchars($data["harga"]);
-        // $pic = htmlspecialchars($data["gambarr"]);
-
 
         // mengupload gambar
         $pic = upload();

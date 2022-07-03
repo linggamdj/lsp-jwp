@@ -59,7 +59,7 @@
     <?php
         if (isset($_POST['register'])) {
             if (registrasi($_POST) > 0) {
-                echo "<script>alert('Registrasi berhasil! Silahkan login kembali.'); window.location.href='login.php'</script>";
+                echo "<script>alert('Registrasi berhasil! Silakan login kembali.'); window.location.href='login.php'</script>";
                 exit;
             } else {
                 echo mysqli_error($conn);
