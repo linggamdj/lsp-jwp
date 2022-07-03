@@ -43,45 +43,7 @@
 
     <?php
         if (isset($_POST['login'])) {
-            // mengambil nilai inputan user
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-
-            // query
-            $query = "SELECT * FROM pelanggan WHERE username='$username'";
-
-            // result
-            $result = mysqli_query($conn, $query);
-
-            if (mysqli_num_rows($result) === 1) {
-                $row = mysqli_fetch_assoc($result);
-
-                // verifikasi password
-                $verify = password_verify($password, $row["password"]);
-
-                if ($verify) {
-                    // set session
-                    $_SESSION["login"] = true;
-                    $_SESSION["username"] = $username;
-
-                    if ($row["role"] == "ADMIN") {
-                        echo "<script>alert('Login telah berhasil sebagai Admin'); window.location.href='index.php'</script>";
-                        exit;
-                    } else if ($row["role"] == "PELANGGAN") {
-                        echo "<script>alert('Login telah berhasil sebagai Pelanggan'); window.location.href='index.php'</script>";
-                        exit;
-                    } else {
-                        echo "<script>alert('Gagal login, silakan ulangi');</script>";
-                        exit;
-                    }
-                } else {
-                    echo "<script>alert('Username atau password salah!');</script>";
-                    exit;
-                }
-            } else {
-                echo "<script>alert('Username atau password salah!');</script>";
-                exit;
-            }
+            login($_POST);
         }
     ?>
 </body>

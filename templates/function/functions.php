@@ -56,6 +56,51 @@
         return mysqli_affected_rows($conn);
     }
 
+    // fungsi untuk login
+    function login($data) {
+        global $conn;
+
+        // mengambil nilai inputan user
+        $username = $data['username'];
+        $password = $data['password'];
+
+        // query pengecekan username ada atau tidak
+        $query = "SELECT * FROM pelanggan WHERE username='$username'";
+
+        // result
+        $result = mysqli_query($conn, $query);
+
+        if (mysqli_num_rows($result) === 1) {
+            $row = mysqli_fetch_assoc($result);
+
+            // verifikasi password
+            $verify = password_verify($password, $row["password"]);
+
+            if ($verify) {
+                // set session
+                $_SESSION["login"] = true;
+                $_SESSION["username"] = $username;
+
+                if ($row["role"] == "ADMIN") {
+                    echo "<script>alert('Login telah berhasil sebagai Admin'); window.location.href='http://localhost/petshopqu'</script>";
+                    exit;
+                } else if ($row["role"] == "PELANGGAN") {
+                    echo "<script>alert('Login telah berhasil sebagai Pelanggan'); window.location.href='http://localhost/petshopqu'</script>";
+                    exit;
+                } else {
+                    echo "<script>alert('Gagal login, silakan ulangi');</script>";
+                    exit;
+                }
+            } else {
+                echo "<script>alert('Username atau password salah!');</script>";
+                exit;
+            }
+        } else {
+            echo "<script>alert('Username belum terdaftar!');</script>";
+            exit;
+        }
+    }
+
     // fungsi untuk tambah data
     function tambah($data) {
         global $conn;
