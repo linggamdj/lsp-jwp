@@ -29,6 +29,7 @@
 <body>
     <?php include 'templates/pages/navbar.php'; ?>
 
+    <?php if ( isset($_SESSION["role"]) == "ADMIN" ) { ?>
     <main>
         <div class="product-title text-center my-5">
             <h2 class="text-black">
@@ -73,6 +74,9 @@
             </tbody>
         </table>
     </main>
+    <?php } else { ?>
+        <script>window.location.href='index.php'</script>";
+    <?php } ?>
     
     <?php include 'templates/pages/footer.php'; ?>
 

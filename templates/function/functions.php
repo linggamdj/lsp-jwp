@@ -80,6 +80,7 @@
                 // set session
                 $_SESSION["login"] = true;
                 $_SESSION["username"] = $username;
+                $_SESSION["role"] = $row["role"];
 
                 if ($row["role"] == "ADMIN") {
                     echo "<script>alert('Login telah berhasil sebagai Admin'); window.location.href='http://localhost/petshopqu'</script>";
@@ -170,7 +171,7 @@
         return $newName;
     }
 
-    //fungsi untuk mengubah data
+    //fungsi untuk mengubah data produk
     function ubah($data) {
         global $conn;
 
@@ -196,6 +197,30 @@
                 harga_produk = $price,
                 gambar = '$pic'
                 WHERE ID_produk = $id
+                ";
+
+        // result
+        query($query);
+
+        return mysqli_affected_rows($conn);
+    }
+
+    //fungsi untuk mengubah data user
+    function ubahPengguna($data) {
+        global $conn;
+
+        // mengambil nilai inputan user
+        $id = $data["id"];
+        $name = htmlspecialchars($data["nama"]);
+        $hp = htmlspecialchars($data["hp"]);
+        $alamat = htmlspecialchars($data["alamat"]);
+
+        // query
+        $query = "UPDATE pelanggan SET
+                name = '$name',
+                alamat = '$alamat',
+                hp = '$hp'
+                WHERE ID_pelanggan = $id
                 ";
 
         // result

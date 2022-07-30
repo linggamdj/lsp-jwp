@@ -25,6 +25,7 @@
             halo, <?php echo $_SESSION['username'] ?>!
           </a>
           <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item text-white" href="profile.php">profile</a>
             <a class="dropdown-item text-white" href="logout.php">logout</a>
           </div>
         </li>

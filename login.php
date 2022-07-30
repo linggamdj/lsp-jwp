@@ -18,6 +18,7 @@
 <body>
     <?php include 'templates/pages/navbar.php'; ?>
 
+    <?php if ( !isset($_SESSION["username"]) ) { ?>
     </main>
         <div class="column my-5">
             <div class="login-logo text-center mb-4">
@@ -36,6 +37,9 @@
             </form>
         </div>
     <main>
+    <?php } else { ?>
+        <script>window.location.href='index.php'</script>";
+    <?php } ?>
 
     <?php include 'templates/pages/footer.php'; ?>
 
